@@ -6,22 +6,54 @@
     <div class="card-block">
       <h4 class="card-title"><%= @user.description %></h4>
       <button type="button" class="btn btn-warning"><%= link_to "Mettre à jour mon profil", edit_user_registration_path %></button>
-    </div></br>
+    </div>
   </div>
-  <div class="card text-center">
-  <h2>Mes dernières consoles mises en location</h2>
-  <% @user.consoles.each do |console| %>
-    <div class="col-xs-4" style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
-            <h4 class="card-title"><%= console.brand %></h4>
-            <h6 class="card-subtitle mb-2 text-muted"><%= console.shifter %> manettes</h6>
-            <p class="card-text">loué par <%= console.user.first_name %> </p>
-            <button type="button" class="btn btn-primary"><%= link_to "More details", console_path(console) %></button>
-            <button type="button" class="btn btn-primary"><%= link_to "Edit",  edit_console_path(console)%></button>
-             <button type="button" class="btn btn-danger"><%= link_to "Delete", console_path(console),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %></button>
-              </br></br>
-    </div>
-    </div>
-  <% end %>
+
+  <!-- Liste des consoles -->
+  <div class="card">
+    <h2>Toutes mes consoles</h2>
+    <% @user.consoles.each do |console| %>
+      <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
+        <h4 class="card-title"><%= console.brand %></h4>
+        <h6 class="card-subtitle mb-2 text-muted"><%= console.shifter %> manettes</h6>
+        <p class="card-text"><%= console.description %> </p>
+        <button type="button" class="btn btn-primary"><%= link_to "Edit",  edit_console_path(console)%></button>
+         <button type="button" class="btn btn-danger"><%= link_to "Delete", console_path(console),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %></button></br></br>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Mes prochaines locations -->
+  <div class="card">
+    <h2>Mes prochaines locations</h2>
+    <% @user.consoles.each do |console| %>
+      <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
+        <h4 class="card-title"><%= console.brand %></h4>
+        <h6 class="card-subtitle mb-2 text-muted"><%= console.shifter %> manettes</h6>
+        <p class="card-text"><%= console.description %> </p>
+        <button type="button" class="btn btn-primary"><%= link_to "Edit",  edit_console_path(console)%></button>
+         <button type="button" class="btn btn-danger"><%= link_to "Delete", console_path(console),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %></button></br></br>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Mon historique de location -->
+  <div class="card">
+    <h2>Mon historique de location</h2>
+    <% @user.consoles.each do |console| %>
+      <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
+        <h4 class="card-title"><%= console.brand %></h4>
+        <h6 class="card-subtitle mb-2 text-muted"><%= console.shifter %> manettes</h6>
+        <p class="card-text"><%= console.description %> </p>
+        <button type="button" class="btn btn-primary"><%= link_to "Edit",  edit_console_path(console)%></button>
+         <button type="button" class="btn btn-danger"><%= link_to "Delete", console_path(console),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %></button></br></br>
+      </div>
+    <% end %>
+  </div>
 </div>
