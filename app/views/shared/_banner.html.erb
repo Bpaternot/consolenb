@@ -1,10 +1,18 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= cl_image_path('playing-sony-console-controller_k4isza.jpg', :effect=>'auto_saturation', :height=>1280, :crop=>'scale') %>');">
   <div class="banner-content">
-    <h1>CONSOLOC</h1>
-    <p>Search the console you always wanted to have and book it easily !</p>
-    <%= form_tag consoles_path, method: :get do %>
-    <%= select_tag :brand, options_for_select(["PS4", "PS3", "PS2", "PSOne", "XBOX", "XBOX One", "Nintendo Ness", "Wii", "SEGA", "Nintendo 64", "Gamecube"], "PS4") %>
-    <input type="submit">
-    <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+          <h1>CONSOLOC</h1>
+          <p>Search the console you always wanted to have and book it easily !</p>
+          <div class="form-group form-inline">
+            <%= form_tag consoles_path, method: :get do %>
+            <%= select_tag :brand, options_for_select(["PS4", "PS3", "PS2", "PSOne", "XBOX", "XBOX One", "Nintendo Ness", "Wii", "SEGA", "Nintendo 64", "Gamecube"]), class: 'form-control text-blue' %>
+            <%= submit_tag 'SEARCH', class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
