@@ -1,0 +1,25 @@
+<% if console.photo %>
+  <% url = cl_image_path cocktail.photo.path %>
+<% else %>
+  <% url = "nopicture.png" %>
+<% end %>
+
+<div class="product">
+  <div class='product-upvote'>
+    <div class="product-arrow"></div>
+    <div class='product-count'>95</div>
+  </div>
+  <%= cl_image_tag url, crop: :fit, class: "product-image hidden-xs" %>
+  <div class='product-body'>
+    <h3><%= console.name %></h3>
+    <% if console.shifter > 1 %>
+    <p>with <%= console.shifter %> controllers</p>
+    <% else %>
+    <p>with <%= console.shifter %> controller</p>
+    <% end %>
+  </div>
+  <ul class="list-inline product-controls hidden-sm hidden-xs">
+    <li><%= link_to "", path_to_define, class: "fa fa-eye" %></li>
+    <li><%= link_to "", path_to_define, class: "fa fa-shopping-cart" %></a></li>
+  </ul>
+</div>
