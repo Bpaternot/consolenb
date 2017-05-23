@@ -2,11 +2,11 @@ class ConsolesController < ApplicationController
   # before action to write for show, edit, update, delete
 
   def index
-    # find all consoles
+    # find all consoles with params of search bar from homepage ? So it's not index anymore
   end
 
   def show
-    # find one console
+    # find one console still with params from the hompeage nah ?
     # show this console
   end
 
