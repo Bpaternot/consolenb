@@ -10,6 +10,7 @@ class ConsolesController < ApplicationController
   end
 
   def show
+    @booking = Booking.new()
   end
 
   def new
@@ -20,7 +21,7 @@ class ConsolesController < ApplicationController
     @console = Console.new(console_params)
     @console.user = current_user
     if @console.save
-      redirect_to consoles_path
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -32,15 +33,15 @@ class ConsolesController < ApplicationController
   def update
     @console.update(console_params)
     if @console.save
-      redirect_to consoles_path
+      redirect_to dashboard_path
     else
       render :new
     end
   end
 
-  def delete
+  def destroy
     @console.destroy
-    redirect_to consoles_path
+    redirect_to dashboard_path
   end
 
   private

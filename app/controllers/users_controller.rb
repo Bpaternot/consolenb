@@ -1,14 +1,7 @@
 class UsersController < ApplicationController
   # before action to write for edit, update and dashboard
 
-  def edit
-    # goes on show of edit
-  end
 
-  def update
-    # update datas with check of params
-    # redirect to dashboard
-  end
 
   def dashboard
     # redirect to dashboard
