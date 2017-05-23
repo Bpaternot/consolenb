@@ -16,6 +16,10 @@
             <h6 class="card-subtitle mb-2 text-muted"><%= console.shifter %> manettes</h6>
             <p class="card-text">loué par <%= console.user.first_name %> </p>
             <button type="button" class="btn btn-primary"><%= link_to "More details", console_path(console) %></button>
+            <button type="button" class="btn btn-primary"><%= link_to "Edit",  edit_console_path(console)%></button>
+             <button type="button" class="btn btn-danger"><%= link_to "Delete", console_path(console),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></button>
               </br></br>
     </div>
     </div>
