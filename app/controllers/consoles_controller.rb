@@ -1,48 +1,52 @@
 class ConsolesController < ApplicationController
   # before action to write for show, edit, update, delete
 
+  before_action :set_console, only: [ :show, :edit, :update, :destroy ]
+
   def index
-    # find all consoles with params of search bar from homepage ? So it's not index anymore
+   @consoles = Console.all
   end
 
   def show
-    # find one console still with params from the hompeage nah ?
-    # show this console
   end
 
   def new
-    # create empty coquille
+    @console = Console.new
   end
 
   def create
-    # create coquille with console_params
-    # save the new console
-    # redirect on dashboard
+    @console = Console.create(console_params)
+    if @console.save
+      redirect_to consoles_path
+    else
+      render :new
+    end
   end
 
   def edit
-    # find one console
   end
 
   def update
-    # find one console
-    # update datas
-    # redirect to dashboard
+    @console.update(console_params)
+    if @console.save
+      redirect_to consoles_path
+    else
+      render :new
+    end
   end
 
   def delete
-    # find one console
-    # delete the console
-    # redirect to dashboard
+    @console.destroy
+    redirect_to consoles_path
   end
 
   private
 
   def set_console
-    # find the current console
+    @console = Console.find(params[:id])
   end
 
   def console_params
-    # permitted params
+    params.require(:consoles).permit(:brand, :shifter, :description)
   end
 end
