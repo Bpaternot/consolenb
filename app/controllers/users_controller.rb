@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def dashboard
     # redirect to dashboard
     @user = current_user
+    @bookings = Booking.where(status: "pending", user: @user)
   end
 
   private
