@@ -2,9 +2,11 @@ class ConsolesController < ApplicationController
   # before action to write for show, edit, update, delete
 
   before_action :set_console, only: [ :show, :edit, :update, :destroy ]
+  skip_before_action :authenticate_user!, only: :index
 
   def index
-   @consoles = Console.all
+   @brand = params[:brand]
+   @consoles = Console.where(brand: @brand)
   end
 
   def show
@@ -15,7 +17,8 @@ class ConsolesController < ApplicationController
   end
 
   def create
-    @console = Console.create(console_params)
+    @console = Console.new(console_params)
+    @console.user = current_user
     if @console.save
       redirect_to consoles_path
     else
@@ -47,6 +50,6 @@ class ConsolesController < ApplicationController
   end
 
   def console_params
-    params.require(:consoles).permit(:brand, :shifter, :description)
+    params.require(:console).permit(:brand, :shifter, :description, :price_per_day)
   end
 end

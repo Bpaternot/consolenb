@@ -1,2 +1,7 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<%= form_tag consoles_path, method: :get do %>
+  <%= select_tag :brand, options_for_select(["PS4", "PS3", "PS2", "PSOne", "XBOX", "XBOX One", "Nintendo Ness", "Wii", "SEGA", "Nintendo 64", "Gamecube"], "PS4") %>
+  <input type="submit">
+<% end %>
