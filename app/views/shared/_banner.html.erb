@@ -2,5 +2,9 @@
   <div class="banner-content">
     <h1>CONSOLOC</h1>
     <p>Search the console you always wanted to have and book it easily !</p>
+    <%= form_tag consoles_path, method: :get do %>
+    <%= select_tag :brand, options_for_select(["PS4", "PS3", "PS2", "PSOne", "XBOX", "XBOX One", "Nintendo Ness", "Wii", "SEGA", "Nintendo 64", "Gamecube"], "PS4") %>
+    <input type="submit">
+    <% end %>
   </div>
 </div>
