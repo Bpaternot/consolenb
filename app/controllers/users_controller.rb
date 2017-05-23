@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def dashboard
     # redirect to dashboard
+    @user = current_user
   end
 
   private

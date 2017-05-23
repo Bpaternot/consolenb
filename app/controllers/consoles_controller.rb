@@ -50,6 +50,6 @@ class ConsolesController < ApplicationController
   end
 
   def console_params
-    params.require(:console).permit(:brand, :shifter, :description, :price_per_day)
+    params.require(:console).permit(:brand, :shifter, :description, :price_per_day, :photo)
   end
 end
