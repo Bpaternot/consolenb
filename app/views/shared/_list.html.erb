@@ -1,17 +1,13 @@
 <% if console.photo %>
   <% url = cl_image_path cocktail.photo.path %>
 <% else %>
-  <% url = "nopicture.png" %>
+  <% url = cl_image_path('playing-sony-console-controller_k4isza.jpg', :effect=>'auto_saturation', :height=>100, :crop=>'scale') %>
 <% end %>
 
 <div class="product">
-  <div class='product-upvote'>
-    <div class="product-arrow"></div>
-    <div class='product-count'>95</div>
-  </div>
   <%= cl_image_tag url, crop: :fit, class: "product-image hidden-xs" %>
   <div class='product-body'>
-    <h3><%= console.name %></h3>
+    <h3><%= console.brand %></h3>
     <% if console.shifter > 1 %>
     <p>with <%= console.shifter %> controllers</p>
     <% else %>
@@ -19,7 +15,8 @@
     <% end %>
   </div>
   <ul class="list-inline product-controls hidden-sm hidden-xs">
-    <li><%= link_to "", path_to_define, class: "fa fa-eye" %></li>
-    <li><%= link_to "", path_to_define, class: "fa fa-shopping-cart" %></a></li>
+    <li><%= link_to "", console_path(console), class: "fa fa-eye" %></li>
+    <li><%= link_to "", consoles_path, class: "fa fa-shopping-cart" %></a></li>
   </ul>
+  <%= link_to "", console_path(console), class: "card-link" %>
 </div>

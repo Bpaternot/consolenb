@@ -1,15 +1,12 @@
-<div class="container" style="display: flex">
-  <div class="card" style="align-items: center;">
-      <div class="row"></br>
-          <h2 class="text-center">Les consoles <%= @brand %> en location:</h2>
-          <% @consoles.each do |console| %>
-            <div class="col-xs-4" style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
-            <h4 class="card-title"><%= console.brand %></h4>
-            <h6 class="card-subtitle mb-2 text-muted"><%= console.shifter %> manettes</h6>
-            <button type="button" class="btn btn-primary"><%= link_to "More details", console_path(console) %></button>
-              </br></br>
-            </div>
-          <% end %>
-      </div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 padded-none">
+      <h2 class="">Les consoles <span class="in-redpastel"><%= @brand %></span> en location:</h2>
+      <% @consoles.each do |console| %>
+      <%= render 'shared/list', console: console %>
+      <% end %>
+    </div>
   </div>
 </div>
