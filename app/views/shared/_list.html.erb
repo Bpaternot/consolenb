@@ -4,14 +4,14 @@
   <% url = cl_image_path('playing-sony-console-controller_k4isza.jpg', :effect=>'auto_saturation', :height=>100, :crop=>'scale') %>
 <% end %>
 
-<div class="product">
+<div class="product marged-left">
   <%= cl_image_tag url, crop: :fit, class: "product-image hidden-xs" %>
   <div class='product-body'>
-    <h3><%= console.brand %></h3>
+    <h3>Rent by <span class="in-redpastel"></span></h3>
     <% if console.shifter > 1 %>
-    <p>with <%= console.shifter %> controllers</p>
+    <p><%= console.brand %> with <%= console.shifter %> controllers</p>
     <% else %>
-    <p>with <%= console.shifter %> controller</p>
+    <p><%= console.brand %> with <%= console.shifter %> controller</p>
     <% end %>
   </div>
   <ul class="list-inline product-controls hidden-sm hidden-xs">
@@ -20,3 +20,5 @@
   </ul>
   <%= link_to "", console_path(console), class: "card-link" %>
 </div>
+
+
