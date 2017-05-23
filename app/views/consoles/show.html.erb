@@ -5,7 +5,6 @@
     </div>
     <div class="card-block">
       <h4 class="card-title"><%= @console.shifter %> manettes</h4>
-      <p class="card-text">Mis en location par <%= @console.user.email %></p>
       <button type="button" class="btn btn-warning"><%= link_to "Go back", consoles_path %></button>
       <button type="button" class="btn btn-warning"><%= link_to "Edit", edit_console_path(@console) %></button>
       <button type="button" class="btn btn-danger"><%= link_to "Delete", console_path(@console),
