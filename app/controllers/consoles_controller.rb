@@ -1,5 +1,7 @@
 class ConsolesController < ApplicationController
-def index
+  # before action to write for show, edit, update, delete
+
+  def index
     # find all consoles with params of search bar from homepage ? So it's not index anymore
   end
 
