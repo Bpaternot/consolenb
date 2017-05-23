@@ -27,3 +27,41 @@
 .padded-none {
   padding: 0px 0px;
 }
+
+.scroll-authorized {
+  overflow: auto;
+}
+
+.scroll-unauthorized {
+  position: fixed;
+}
+
+.fake-height {
+  height: 50px;
+}
+
+.margin-bottom {
+  margin-bottom: 40px;
+}
+
+.marged-right {
+  margin-right: 60px;
+}
+
+.marged-left {
+  margin-left: 70px;
+}
+.no-marged {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.no-marged-right {
+    margin-right: 0px;
+}
+
+@media (min-width: 1200px) {
+.container-index {
+    width: 100%;
+  }
+}
