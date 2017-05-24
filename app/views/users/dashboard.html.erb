@@ -9,8 +9,12 @@
     </div>
   </div>
 
+  <!-- my pending bookings as owner -->
 
-  <!-- my pending bookings -->
+
+
+
+  <!-- my pending bookings as renter -->
   <div>
     <h2>My pending bookings</h2>
       <% @bookings_pending.each do |book| %>
@@ -23,7 +27,7 @@
       <% end %>
   </div>
 
-   <!-- my approved  bookings -->
+   <!-- my approved  bookings as renter -->
   <div>
     <h2>My approved bookings</h2>
       <% @bookings_approved.each do |book| %>
@@ -36,7 +40,7 @@
       <% end %>
   </div>
 
-   <!-- my past bookings -->
+   <!-- my past bookings as renter-->
   <div>
     <h2>My past bookings</h2>
       <% @bookings_past.each do |book| %>
@@ -49,7 +53,7 @@
       <% end %>
   </div>
 
-     <!-- my declined bookings -->
+     <!-- my declined bookings as renter -->
   <div>
     <h2>My declined bookings</h2>
       <% @bookings_declined.each do |book| %>
