@@ -1,15 +1,10 @@
-<div class="container" style="display: flex">
-  <div class="card" style="align-items: center;">
-      <div class="row"></br>
-          <h2 class="text-center">Add a new console</h2>
-            <%= simple_form_for @console do |f| %>
-              <%= f.input :brand, collection: Console::BRAND  %>
-              <%= f.input :shifter, collection: 1..8 %>
-              <%= f.input :description, as: :text, label: "description" %>
-              <%= f.input :address, as: :string %>
-              <%= f.input :price_per_day, as: :integer %>
-              <%= f.submit "Add", class: "btn btn-primary" %>
-          <% end %>
-      </div>
-  </div>
-</div>
+<h2 class="text-center">Add a new console</h2>
+<%= simple_form_for @console do |f| %>
+  <%= f.input :brand, collection: Console::BRAND  %>
+  <%= f.input :shifter, collection: 1..8 %>
+  <%= f.input :description, as: :text, label: "description" %>
+  <%= f.input :address, as: :string %>
+  <%= f.input :price_per_day, as: :integer %>
+  <%= f.submit "Add", class: "btn btn-primary" %>
+<% end %>
+
