@@ -9,105 +9,105 @@
       <%= link_to "Mettre à jour mon profil", edit_user_registration_path, class: "btn btn-primary" %>
     </div>
   </div>
-  <!-- my pending bookings as owner -->
-  <div class="card">
-      <h2>Your console waiting to be booked</h2>
-        <% @bookings_pending_owner.each do |book| %>
-        <div class="col-sm-6">
-        <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
-          <h4 class="card-title"><%= book.user.first_name %> booked your console!</h4>
-          <p class="card-text">Start day: <%= book.start_day %></p>
-          <p class="card-text">Duration: <%= book.duration %> </p>
-          <p class="card-text">Console: <%= book.console.brand %></p>
-          <p class="card-text">Name: <%= book.console.user.first_name %></p>
-          <%= link_to "Accept", console_bookings_path(book.console, book), class: "btn btn-primary" %>
-        </div>
-        </div>
-      <% end %>
+
+  <!-- OWNER FONCTIONNALITIES -->
+  <h1>OWNER SIDE</h1>
+  <div class="row">
+    <h2>My consoles</h2>
+      <div class="card">
+        <% @user.consoles.each do |console| %>
+          <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3">
+
+                <h4 class="card-title"><%= console.brand %></h4>
+                <h6 class="card-subtitle mb-2 text-muted"><%= console.shifter %> manettes</h6>
+                <p class="card-text"><%= console.description %> </p>
+                <%= link_to "Edit",  edit_console_path(console), class: "btn btn-primary"%>
+                 <%= link_to "Delete", console_path(console),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+              </div>
+              <% @bookings_pending_owner.each do |book| %>
+                <div class="col-xs-12 col-sm-9 col-md-9">
+                  <% if book.console == console %>
+                    <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
+                        <h4 class="card-title"><%= book.user.first_name %> want to book it!</h4>
+                        <p class="card-text">Start day: <%= book.start_day %></p>
+                        <p class="card-text">Duration: <%= book.duration %> </p>
+                        <p class="card-text">Console: <%= book.console.brand %></p>
+                        <%= link_to "Accept", booking_path(book), class: "btn btn-primary" %>
+                    </div>
+                  <% else %>
+                    <p>Nobody booked this console for now.</p>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+
+_____________________________________________________________________________________________________________________________________
+        <% end %>
+      </div>
     </div>
+
+_____________________________________________________________________________________________________________________________________
+
+
+  <h1>RENTER SIDE</h1>
+
+
   <!-- my pending bookings as renter -->
     <div class="card">
-      <h2>My pending bookings</h2>
+      <h2>Bookings</h2>
+
+      <p>Waiting for the owner to accept your inquiry:</p>
+      <div class="card">
         <% @bookings_pending.each do |book| %>
+          <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
+            <h4 class="card-text">Owner name: <%= book.console.user.first_name %> </h4>
+            <p class="card-title">Console: <%= book.console.brand %></p>
+            <h6 class="card-subtitle mb-2 text-muted"><%= book.console.shifter %> controllers</h6>
+            <p class="card-text"><%= book.console.description %> </p>
+            <p class="card-text">Start day: <%= book.start_day %></p>
+            <p class="card-text">Duration: <%= book.duration %> </p>
+          </div>
+        <% end %>
+      </div>
+      <p>Your coming bookings:</p>
+      <div class="card">
+        <% @bookings_approved.each do |book| %>
         <div class="col-sm-6">
         <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
-          <h4 class="card-title">Console: <%= book.console.brand %></h4>
+          <h4 class="card-text">Owner name: <%= book.console.user.first_name %> </h4>
+          <p class="card-title">Console: <%= book.console.brand %></p>
           <h6 class="card-subtitle mb-2 text-muted"><%= book.console.shifter %> controllers</h6>
           <p class="card-text"><%= book.console.description %> </p>
           <p class="card-text">Start day: <%= book.start_day %></p>
           <p class="card-text">Duration: <%= book.duration %> </p>
-          <p class="card-text">Name: <%= book.console.user.first_name %> </p>
-          <%= link_to "Edit",  edit_console_path(book.console), class: "btn btn-primary"%>
-           <%= link_to "Delete", console_path(book.console),
-                method: :delete,
-                data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
         </div>
         </div>
       <% end %>
-    </div>
+      </div>
+      <p>Your past bookings:</p>
+      <div class="card">
+        <h2>My renting history</h2>
+          <% @bookings_past.each do |book| %>
+            <div class="col-sm-6">
+            <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
+              <h4 class="card-text">Owner name: <%= book.console.user.first_name %> </h4>
+              <p class="card-title">Console: <%= book.console.brand %></p>
+              <h6 class="card-subtitle mb-2 text-muted"><%= book.console.shifter %> controllers</h6>
+              <p class="card-text"><%= book.console.description %> </p>
+              <p class="card-text">Start day: <%= book.start_day %></p>
+              <p class="card-text">Duration: <%= book.duration %> </p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+
+
+
    <!-- my approved  bookings as renter -->
-<div class="card">
-    <h2>My approved bookings</h2>
-      <% @bookings_approved.each do |book| %>
-      <div class="col-sm-6">
-      <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
-        <h4 class="card-title">Console: <%= book.console.brand %></h4>
-        <h6 class="card-subtitle mb-2 text-muted"><%= book.console.shifter %> controllers</h6>
-        <p class="card-text"><%= book.console.description %> </p>
-        <p class="card-text">Start day: <%= book.start_day %></p>
-        <p class="card-text">Duration: <%= book.duration %> </p>
-        <p class="card-text">Name: <%= book.console.user.first_name %> </p>
-      </div>
-      </div>
-    <% end %>
-  </div>
-  <!-- Liste des consoles -->
-  <div class="card">
-    <h2>My consoles</h2>
-    <% @user.consoles.each do |console| %>
-    <div class="col-sm-6">
-      <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
-        <h4 class="card-title"><%= console.brand %></h4>
-        <h6 class="card-subtitle mb-2 text-muted"><%= console.shifter %> manettes</h6>
-        <p class="card-text"><%= console.description %> </p>
-        <%= link_to "Edit",  edit_console_path(console), class: "btn btn-primary"%>
-         <%= link_to "Delete", console_path(console),
-              method: :delete,
-              data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
-      </div>
-  </div>
-    <% end %>
-  </div>
+
+
   <!-- Mon historique de location -->
-  <div class="card">
-    <h2>My renting history</h2>
-      <% @bookings_past.each do |book| %>
-      <div class="col-sm-6">
-      <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
-        <h4 class="card-title">Console: <%= book.console.brand %></h4>
-        <h6 class="card-subtitle mb-2 text-muted"><%= book.console.shifter %> controllers</h6>
-        <p class="card-text"><%= book.console.description %> </p>
-        <p class="card-text">Start day: <%= book.start_day %></p>
-        <p class="card-text">Duration: <%= book.duration %> </p>
-        <p class="card-text">Name: <%= book.console.user.first_name %> </p>
-      </div>
-  </div>
-    <% end %>
-  </div>
-<!-- my declined bookings as renter -->
-<div class="card margin-bottom">
-    <h2>My declined bookings</h2>
-      <% @bookings_declined.each do |book| %>
-      <div class="col-sm-6">
-      <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
-        <h4 class="card-title">Console: <%= book.console.brand %></h4>
-        <h6 class="card-subtitle mb-2 text-muted"><%= book.console.shifter %> controllers</h6>
-        <p class="card-text"><%= book.console.description %> </p>
-        <p class="card-text">Start day: <%= book.start_day %></p>
-        <p class="card-text">Duration: <%= book.duration %> </p>
-        <p class="card-text">Name: <%= book.console.user.first_name %> </p>
-      </div>
-      </div>
-    <% end %>
-  </div>
-</div>
