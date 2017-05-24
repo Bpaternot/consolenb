@@ -7,7 +7,7 @@
 <div class="product marged-left">
   <%= cl_image_tag url, crop: :fit, class: "product-image hidden-xs" %>
   <div class='product-body'>
-    <h3>Rent by <span class="in-redpastel"></span></h3>
+    <h3>Rent by <span class="in-redpastel"><%= console.user.first_name %> <%= console.user.last_name %></span></h3>
     <% if console.shifter > 1 %>
     <p><%= console.brand %> with <%= console.shifter %> controllers</p>
     <% else %>
@@ -16,7 +16,6 @@
   </div>
   <ul class="list-inline product-controls hidden-sm hidden-xs">
     <li><%= link_to "", console_path(console), class: "fa fa-eye" %></li>
-    <li><%= link_to "", consoles_path, class: "fa fa-shopping-cart" %></a></li>
   </ul>
   <%= link_to "", console_path(console), class: "card-link" %>
 </div>
