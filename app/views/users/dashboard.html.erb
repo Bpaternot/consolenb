@@ -1,5 +1,3 @@
-
-
 <div class="fake-height"></div>
 <div class="container">
   <div class="card text-center">
@@ -8,137 +6,107 @@
     </div>
     <div class="card-block">
       <h4 class="card-title"><%= @user.description %></h4>
-      <button type="button" class="btn btn-warning"><%= link_to "Mettre à jour mon profil", edit_user_registration_path %></button>
+      <%= link_to "Mettre à jour mon profil", edit_user_registration_path, class: "btn btn-primary" %>
     </div>
   </div>
-
   <!-- my pending bookings as owner -->
-<div>
-    <h2> Your console waiting to be booked </h2>
-      <% @bookings_pending_owner.each do |book| %>
-      <div>
-         <p><%= book.user.first_name %> booked your console!</p>
-         <p>start day: <%= book.start_day %></p>
-         <p>Duration: <%= book.duration %></p>
-         <p>Console: <%= book.console.brand %></p>
-         <p>Name: <%= book.console.user.first_name %></p>
-         <p><%= book.status %></p>
-
-        <%= simple_form_for book do |f| %>
-          <%= f.input :status, :as => :hidden, :input_html => { :value => "approved" } %>
-          <%= f.submit "Accept", class: "btn btn-primary" %>
-        <% end %>
-
-
-         <%= simple_form_for book do |f| %>
-          <%= f.input :status, :as => :hidden, :input_html => { :value => "
-            declined" } %>
-          <%= f.submit "Decline", class: "btn btn-primary" %>
-        <% end %>
-
+  <div class="card">
+      <h2>Your console waiting to be booked</h2>
+        <% @bookings_pending_owner.each do |book| %>
+        <div class="col-sm-6">
+        <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
+          <h4 class="card-title"><%= book.user.first_name %> booked your console!</h4>
+          <p class="card-text">Start day: <%= book.start_day %></p>
+          <p class="card-text">Duration: <%= book.duration %> </p>
+          <p class="card-text">Console: <%= book.console.brand %></p>
+          <p class="card-text">Name: <%= book.console.user.first_name %></p>
+          <%= link_to "Accept", console_booking_path(book.console, book), class: "btn btn-primary" %>
+        </div>
+        </div>
       <% end %>
-  </div>
-
-
-
+    </div>
   <!-- my pending bookings as renter -->
-  <div>
-    <h2>My pending bookings</h2>
-      <% @bookings_pending.each do |book| %>
-      <div>
-         <p>start day: <%= book.start_day %></p>
-         <p>Duration: <%= book.duration %></p>
-         <p>Console: <%= book.console.brand %></p>
-         <p>Name: <%= book.console.user.first_name %></p>
-      </div>
+    <div class="card">
+      <h2>My pending bookings</h2>
+        <% @bookings_pending.each do |book| %>
+        <div class="col-sm-6">
+        <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
+          <h4 class="card-title">Console: <%= book.console.brand %></h4>
+          <h6 class="card-subtitle mb-2 text-muted"><%= book.console.shifter %> controllers</h6>
+          <p class="card-text"><%= book.console.description %> </p>
+          <p class="card-text">Start day: <%= book.start_day %></p>
+          <p class="card-text">Duration: <%= book.duration %> </p>
+          <p class="card-text">Name: <%= book.console.user.first_name %> </p>
+          <%= link_to "Edit",  edit_console_path(book.console), class: "btn btn-primary"%>
+           <%= link_to "Delete", console_path(book.console),
+                method: :delete,
+                data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+        </div>
+        </div>
       <% end %>
-  </div>
-
+    </div>
    <!-- my approved  bookings as renter -->
-  <div>
+<div class="card">
     <h2>My approved bookings</h2>
       <% @bookings_approved.each do |book| %>
-      <div>
-         <p>start day: <%= book.start_day %></p>
-         <p>Duration: <%= book.duration %></p>
-         <p>Console: <%= book.console.brand %></p>
-         <p>Name: <%= book.console.user.first_name %></p>
+      <div class="col-sm-6">
+      <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
+        <h4 class="card-title">Console: <%= book.console.brand %></h4>
+        <h6 class="card-subtitle mb-2 text-muted"><%= book.console.shifter %> controllers</h6>
+        <p class="card-text"><%= book.console.description %> </p>
+        <p class="card-text">Start day: <%= book.start_day %></p>
+        <p class="card-text">Duration: <%= book.duration %> </p>
+        <p class="card-text">Name: <%= book.console.user.first_name %> </p>
       </div>
-      <% end %>
-  </div>
-
-   <!-- my past bookings as renter-->
-  <div>
-    <h2>My past bookings</h2>
-      <% @bookings_past.each do |book| %>
-      <div>
-         <p>start day: <%= book.start_day %></p>
-         <p>Duration: <%= book.duration %></p>
-         <p>Console: <%= book.console.brand %></p>
-         <p>Name: <%= book.console.user.first_name %></p>
       </div>
-      <% end %>
+    <% end %>
   </div>
-
-     <!-- my declined bookings as renter -->
-  <div>
-    <h2>My declined bookings</h2>
-      <% @bookings_declined.each do |book| %>
-      <div>
-         <p>start day: <%= book.start_day %></p>
-         <p>Duration: <%= book.duration %></p>
-         <p>Console: <%= book.console.brand %></p>
-         <p>Name: <%= book.console.user.first_name %></p>
-      </div>
-      <% end %>
-  </div>
-
-
-
   <!-- Liste des consoles -->
   <div class="card">
-    <h2>Toutes mes consoles</h2>
+    <h2>My consoles</h2>
     <% @user.consoles.each do |console| %>
+    <div class="col-sm-6">
       <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
         <h4 class="card-title"><%= console.brand %></h4>
         <h6 class="card-subtitle mb-2 text-muted"><%= console.shifter %> manettes</h6>
         <p class="card-text"><%= console.description %> </p>
-        <button type="button" class="btn btn-primary"><%= link_to "Edit",  edit_console_path(console)%></button>
-         <button type="button" class="btn btn-danger"><%= link_to "Delete", console_path(console),
+        <%= link_to "Edit",  edit_console_path(console), class: "btn btn-primary"%>
+         <%= link_to "Delete", console_path(console),
               method: :delete,
-              data: { confirm: "Are you sure?" } %></button></br></br>
+              data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
       </div>
+  </div>
     <% end %>
   </div>
-
-  <!-- Mes prochaines locations -->
-  <div class="card">
-    <h2>Mes prochaines locations</h2>
-    <% @user.consoles.each do |console| %>
-      <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
-        <h4 class="card-title"><%= console.brand %></h4>
-        <h6 class="card-subtitle mb-2 text-muted"><%= console.shifter %> manettes</h6>
-        <p class="card-text"><%= console.description %> </p>
-        <button type="button" class="btn btn-primary"><%= link_to "Edit",  edit_console_path(console)%></button>
-         <button type="button" class="btn btn-danger"><%= link_to "Delete", console_path(console),
-              method: :delete,
-              data: { confirm: "Are you sure?" } %></button></br></br>
-      </div>
-    <% end %>
-  </div>
-
   <!-- Mon historique de location -->
   <div class="card">
-    <h2>Mon historique de location</h2>
-    <% @user.consoles.each do |console| %>
+    <h2>My renting history</h2>
+      <% @bookings_past.each do |book| %>
+      <div class="col-sm-6">
       <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
-        <h4 class="card-title"><%= console.brand %></h4>
-        <h6 class="card-subtitle mb-2 text-muted"><%= console.shifter %> manettes</h6>
-        <p class="card-text"><%= console.description %> </p>
-        <button type="button" class="btn btn-primary"><%= link_to "Edit",  edit_console_path(console)%></button>
-         <button type="button" class="btn btn-danger"><%= link_to "Delete", console_path(console),
-              method: :delete,
-              data: { confirm: "Are you sure?" } %></button></br></br>
+        <h4 class="card-title">Console: <%= book.console.brand %></h4>
+        <h6 class="card-subtitle mb-2 text-muted"><%= book.console.shifter %> controllers</h6>
+        <p class="card-text"><%= book.console.description %> </p>
+        <p class="card-text">Start day: <%= book.start_day %></p>
+        <p class="card-text">Duration: <%= book.duration %> </p>
+        <p class="card-text">Name: <%= book.console.user.first_name %> </p>
+      </div>
+  </div>
+    <% end %>
+  </div>
+<!-- my declined bookings as renter -->
+<div class="card margin-bottom">
+    <h2>My declined bookings</h2>
+      <% @bookings_declined.each do |book| %>
+      <div class="col-sm-6">
+      <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
+        <h4 class="card-title">Console: <%= book.console.brand %></h4>
+        <h6 class="card-subtitle mb-2 text-muted"><%= book.console.shifter %> controllers</h6>
+        <p class="card-text"><%= book.console.description %> </p>
+        <p class="card-text">Start day: <%= book.start_day %></p>
+        <p class="card-text">Duration: <%= book.duration %> </p>
+        <p class="card-text">Name: <%= book.console.user.first_name %> </p>
+      </div>
       </div>
     <% end %>
   </div>
