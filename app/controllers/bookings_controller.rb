@@ -18,17 +18,10 @@ class BookingsController < ApplicationController
   end
 
   def update
-    # find console
-    # find current booking
-    # link updated booking to console
-    # save updated booking
-    # redirect to dashboard
-    raise
+    @booking = Booking.find(params[:id])
 
-    if @booking.save
+    if @booking.update(booking_params)
       redirect_to dashboard_path
-    else
-      render "consoles/show"
     end
 
   end
@@ -42,6 +35,6 @@ class BookingsController < ApplicationController
   # end
 
   def booking_params
-    params.require(:booking).permit(:start_day, :duration )
+    params.require(:booking).permit(:start_day, :duration, :status )
   end
 end
