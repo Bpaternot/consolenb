@@ -36,6 +36,8 @@ class BookingsController < ApplicationController
     # redirect to dashboard
   end
 
+
+
   private
 
   # def set_booking

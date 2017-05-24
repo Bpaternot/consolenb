@@ -9,6 +9,25 @@
     </div>
   </div>
 
+
+  <!-- my bookings -->
+
+  <div>
+    <h2>My bookings</h2>
+    <% @bookings.each do |book| %>
+    <div>
+     <p>start day: <%= book.start_day %></p>
+
+     <p>Duration: <%= book.duration %></p>
+     <p>Console: <%= book.console.brand %></p>
+     <p>Name: <%= book.console.user.email %></p>
+
+    </div>
+    <% end %>
+  </div>
+
+
+
   <!-- Liste des consoles -->
   <div class="card">
     <h2>Toutes mes consoles</h2>

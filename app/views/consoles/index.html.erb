@@ -1,12 +1,37 @@
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6 padded-none">
-      <h2 class="">Les consoles <span class="in-redpastel"><%= @brand %></span> en location:</h2>
-      <% @consoles.each do |console| %>
-      <%= render 'shared/list', console: console %>
-      <% end %>
+<div class="fake-height"></div>
+<div class="scroll-authorized margin-bottom">
+  <div class="container container-index padded-none">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <h2 class="marged-left">Les consoles <span class="in-redpastel"><%= @brand %></span> en location:</h2>
+        <% @consoles.each do |console| %>
+        <%= render 'shared/list', console: console %>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div id="map" class="scroll-unauthorized" style="width: 100%; height: calc(100vh - 90px);"></div>
+      </div>
     </div>
   </div>
 </div>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+<script type="text/javascript">
+var myLatlng = new google.maps.LatLng(48.8655909, 2.378983);
+
+var myOptions = {
+  zoom: 16,
+  center: myLatlng,
+  scrollwheel: false,
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+  styles: [] // TODO: replace [] by array from https://snazzymaps.com/
+};
+
+var map = new google.maps.Map(document.getElementById('map'), myOptions);
+var marker = new google.maps.Marker({
+  position: myLatlng,
+  map: map,
+  title: "You are here!"
+});
+</script>

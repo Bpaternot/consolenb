@@ -1,5 +1,5 @@
 $('.datepicker').datepicker({
-  format: "mm/dd/yyyy",
+  format: "dd/mm/yyyy",
   weekStart: 1,
   autoclose: true
 });
