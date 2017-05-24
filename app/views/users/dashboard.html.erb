@@ -10,6 +10,20 @@
   </div>
 
   <!-- my pending bookings as owner -->
+<div>
+    <h2> Your console waiting to be booked </h2>
+      <% @bookings_pending_owner.each do |book| %>
+      <div>
+         <p><%= book.user.first_name %> booked your console!</p>
+         <p>start day: <%= book.start_day %></p>
+         <p>Duration: <%= book.duration %></p>
+         <p>Console: <%= book.console.brand %></p>
+         <p>Name: <%= book.console.user.first_name %></p>
+        <button type="button" class="btn btn-warning"><%= link_to "Accept", console_booking_path(book.console, book) %></button>
+
+      </div>
+      <% end %>
+  </div>
 
 
 
