@@ -9,21 +9,61 @@
     </div>
   </div>
 
+  <!-- my pending bookings as owner -->
 
-  <!-- my bookings -->
 
+
+
+  <!-- my pending bookings as renter -->
   <div>
-    <h2>My bookings</h2>
-    <% @bookings.each do |book| %>
-    <div>
-     <p>start day: <%= book.start_day %></p>
+    <h2>My pending bookings</h2>
+      <% @bookings_pending.each do |book| %>
+      <div>
+         <p>start day: <%= book.start_day %></p>
+         <p>Duration: <%= book.duration %></p>
+         <p>Console: <%= book.console.brand %></p>
+         <p>Name: <%= book.console.user.first_name %></p>
+      </div>
+      <% end %>
+  </div>
 
-     <p>Duration: <%= book.duration %></p>
-     <p>Console: <%= book.console.brand %></p>
-     <p>Name: <%= book.console.user.email %></p>
+   <!-- my approved  bookings as renter -->
+  <div>
+    <h2>My approved bookings</h2>
+      <% @bookings_approved.each do |book| %>
+      <div>
+         <p>start day: <%= book.start_day %></p>
+         <p>Duration: <%= book.duration %></p>
+         <p>Console: <%= book.console.brand %></p>
+         <p>Name: <%= book.console.user.first_name %></p>
+      </div>
+      <% end %>
+  </div>
 
-    </div>
-    <% end %>
+   <!-- my past bookings as renter-->
+  <div>
+    <h2>My past bookings</h2>
+      <% @bookings_past.each do |book| %>
+      <div>
+         <p>start day: <%= book.start_day %></p>
+         <p>Duration: <%= book.duration %></p>
+         <p>Console: <%= book.console.brand %></p>
+         <p>Name: <%= book.console.user.first_name %></p>
+      </div>
+      <% end %>
+  </div>
+
+     <!-- my declined bookings as renter -->
+  <div>
+    <h2>My declined bookings</h2>
+      <% @bookings_declined.each do |book| %>
+      <div>
+         <p>start day: <%= book.start_day %></p>
+         <p>Duration: <%= book.duration %></p>
+         <p>Console: <%= book.console.brand %></p>
+         <p>Name: <%= book.console.user.first_name %></p>
+      </div>
+      <% end %>
   </div>
 
 
