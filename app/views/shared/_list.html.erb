@@ -9,9 +9,9 @@
   <div class='product-body'>
     <h3>Rent by <span class="in-redpastel"><%= console.user.first_name %> <%= console.user.last_name %></span></h3>
     <% if console.shifter > 1 %>
-    <p><%= console.brand %> with <%= console.shifter %> controllers</p>
+    <p><%= console.brand %> with <%= console.shifter %> controllers - <span class="in-redpastel"><%= console.price_per_day %>€</span></p>
     <% else %>
-    <p><%= console.brand %> with <%= console.shifter %> controller</p>
+    <p><%= console.brand %> with <%= console.shifter %> controller - <span class="in-redpastel"><%= console.price_per_day %>€</span></p>
     <% end %>
   </div>
   <ul class="list-inline product-controls hidden-sm hidden-xs">
