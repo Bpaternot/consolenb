@@ -19,12 +19,22 @@
          <p>Duration: <%= book.duration %></p>
          <p>Console: <%= book.console.brand %></p>
          <p>Name: <%= book.console.user.first_name %></p>
-        <button type="button" class="btn btn-warning"><%= link_to "Accept", console_booking_path(book.console, book) %></button>
+         <p><%= book.status %></p>
 
-      </div>
+        <%= simple_form_for book do |f| %>
+          <%= f.input :status, :as => :hidden, :input_html => { :value => "approved" } %>
+          <%= f.submit "Accept", class: "btn btn-primary" %>
+        <% end %>
+
+
+         <%= simple_form_for book do |f| %>
+          <%= f.input :status, :as => :hidden, :input_html => { :value => "
+            declined" } %>
+          <%= f.submit "Decline", class: "btn btn-primary" %>
+        <% end %>
+
       <% end %>
   </div>
-
 
 
 
