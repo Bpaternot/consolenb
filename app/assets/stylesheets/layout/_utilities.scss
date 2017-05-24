@@ -60,6 +60,21 @@
     margin-right: 0px;
 }
 
+.flex {
+  height: calc(100vh - 90px);
+  display: flex;
+  align-items: center;
+}
+
+.absolute {
+  position: absolute;
+  bottom: 30px;
+  left: 148px;
+}
+
+.relative {
+  position: relative;
+}
 @media (min-width: 1200px) {
 .container-index {
     width: 100%;

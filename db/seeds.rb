@@ -34,8 +34,8 @@ user.first_name = "benito"
 user.save!
 
 
-Console.create(brand: "PS4", shifter: 3, description: "Console en bon état", price_per_day: 30, user: User.first)
-Console.create(brand: "PS3", shifter: 2, description: "Manque un boutton X", price_per_day: 15, user: User.last)
+Console.create(brand: "PS4", shifter: 3, description: "Console en bon état", price_per_day: 30, user: User.first, address: "23 rue Rousselet 75007 Paris")
+Console.create(brand: "PS3", shifter: 2, description: "Manque un boutton X", price_per_day: 15, user: User.last, address: "23 boulevard Haussman 75008 Paris")
 # Console.create(brand: "PS2", shifter: 1, description: "Console en bon état et prête à l'emploi", price_per_day: 27)
 # Console.create(brand: "PSOne", shifter: 2, description: "Console en bon état et prête à l'emploi", price_per_day: 98)
 # Console.create(brand: "XBOX", shifter: 4, description: "Console en bon état", price_per_day: 23)
