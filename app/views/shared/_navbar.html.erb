@@ -27,7 +27,6 @@
       <% end %> -->
 
       <%= link_to "New console", new_console_path, class:"navbar-wagon-item navbar-wagon-link"%>
-      <%= link_to "My consoles", new_console_path, class:"navbar-wagon-item navbar-wagon-link"%>
 
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
@@ -37,11 +36,6 @@
             <li>
               <%= link_to "dashboard" do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Dashboard") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
               <% end %>
             </li>
             <li>

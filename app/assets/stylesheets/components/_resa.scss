@@ -1,0 +1,39 @@
+.resa {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+  transition: all 0.15s ease;
+  max-width: 500px;
+  position: relative;
+  background: $paleaqua;
+  max-width: 600px;
+}
+
+.resa h2 {
+  margin-bottom: 30px;
+}
+
+.in-redpastel {
+  color: $pastelred;
+}
+
+/* Body design */
+.resa-body {
+  flex: 1 1 auto;
+}
+.resa-body h3 {
+  font-weight: bold;
+  font-size: 23px;
+  margin-top: 0;
+  color: $prussianblue;
+}
+.resa-body p {
+  font-weight: lighter;
+  color: #999999;
+  margin-bottom: 0;
+}
+
+// .product:hover .product-upvote { transform: scale(1.2) }
+.product:hover .product-controls-hidden a { color: #E6E6E6 }
+.product-upvote:hover .product-arrow { border-bottom: 9px solid #5898f1 }

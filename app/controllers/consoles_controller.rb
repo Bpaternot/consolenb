@@ -10,7 +10,7 @@ class ConsolesController < ApplicationController
 
    @console = Console.where.not(latitude: nil, longitude: nil)
 
-    @hash = Gmaps4rails.build_markers(@console) do |console, marker|
+    @hash = Gmaps4rails.build_markers(@consoles) do |console, marker|
       marker.lat console.latitude
       marker.lng console.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
