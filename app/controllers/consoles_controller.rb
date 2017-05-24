@@ -7,6 +7,15 @@ class ConsolesController < ApplicationController
   def index
    @brand = params[:brand]
    @consoles = Console.where(brand: @brand)
+
+   @console = Console.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@console) do |console, marker|
+      marker.lat console.latitude
+      marker.lng console.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
+
   end
 
   def show
@@ -51,6 +60,6 @@ class ConsolesController < ApplicationController
   end
 
   def console_params
-    params.require(:console).permit(:brand, :shifter, :description, :price_per_day, :photo)
+    params.require(:console).permit(:brand, :shifter, :description, :price_per_day, :photo, :address, :latitude, :longitude)
   end
 end
