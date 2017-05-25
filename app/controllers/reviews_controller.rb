@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     # we need `restaurant_id` to asssociate review with corresponding restaurant
     @review.console = Console.find(params[:console_id])
+    @review.user = current_user
     if @review.save
       redirect_to dashboard_path
     end

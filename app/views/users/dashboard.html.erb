@@ -181,9 +181,10 @@ ________________________________________________________________________________
               <p class="card-text"><%= book.console.description %> </p>
               <p class="card-text">Start day: <%= book.start_day %></p>
               <p class="card-text">Duration: <%= book.duration %> </p>
-              <% if book.console.reviews %>
+              <% if book.console.reviews.where(user: current_user).count < 0  %>
+              <%= link_to "Noter la console", new_console_review_path(book.console), class: "btn btn-primary" %>
               <% else %>
-                  <%= link_to "Noter la console", new_console_review_path(book.console), class: "btn btn-primary" %>
+
               <% end %>
             </div>
           <% end %>
