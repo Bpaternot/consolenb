@@ -103,8 +103,9 @@ ________________________________________________________________________________
         </div>
       <% end %>
       </div>
-      <p>Your past bookings:</p>
-      <div class="card">
+
+      <!-- my past bookings as renter -->
+      <div class="card margin-bottom" style="margin-bottom: 500px">
         <h2>My renting history</h2>
           <% @bookings_past.each do |book| %>
             <div class="col-sm-6">
@@ -115,6 +116,10 @@ ________________________________________________________________________________
               <p class="card-text"><%= book.console.description %> </p>
               <p class="card-text">Start day: <%= book.start_day %></p>
               <p class="card-text">Duration: <%= book.duration %> </p>
+              <% if book.console.reviews %>
+              <% else %>
+                  <%= link_to "Noter la console", new_console_review_path(book.console), class: "btn btn-primary" %>
+              <% end %>
             </div>
           <% end %>
         </div>
