@@ -1,5 +1,15 @@
 <div class="fake-height"></div>
+
+<div class="col-xs-12 col-sm-6 col-md-6">
+  <h2>Rented by <%= @console.user.first_name %> <%= @console.user.last_name %></h2>
+  <p><%= @console.user.description %></p>
+  <p><i class="fa fa-television" aria-hidden="true"></i> <span class="in-redpastel"><%= @console.brand %></span></p>
+  <p><i class="fa fa-gamepad" aria-hidden="true"></i> <span class="in-redpastel"><%= @console.shifter %></span> controllers</p>
+  <p><i class="fa fa-eur" aria-hidden="true"></i> <span class="in-redpastel"><%= @console.price_per_day %></span> per day</p>
+</div>
+
 <%= simple_form_for [@console, @review] do |f| %>
   <%= f.input :content %>
+  <%= f.input :rating %>
   <%= f.submit "add a review", class: "btn btn-primary" %>
 <% end %>
