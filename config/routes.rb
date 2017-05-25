@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :consoles do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only: [ :update ]
-
+  resources :bookings, only: [:update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

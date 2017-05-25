@@ -18,14 +18,10 @@ class BookingsController < ApplicationController
   end
 
   def update
-    raise
     @booking = Booking.find(params[:id])
-    @booking.status = "approved"
-
     if @booking.update(booking_params)
       redirect_to dashboard_path
     end
-
   end
 
 
