@@ -24,6 +24,10 @@
             <%= f.input :duration, collection: 1..7 %>
             <%= f.submit "Book !", class: "btn btn-primary" %>
             <% end %>
+            <h3> Les commentaires de la consoles </h3>
+            <% console.reviews.each do |review| %>
+            <%= review.content %>
+            <% end %>
           </div>
           <% end %>
         </div>
