@@ -2,6 +2,7 @@ class Console < ApplicationRecord
   has_attachment :photo
   belongs_to :user
   has_many :bookings
+  has_many :reviews, dependent: :destroy
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 

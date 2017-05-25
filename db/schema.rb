@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524124943) do
+
+ActiveRecord::Schema.define(version: 20170525085532) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +58,14 @@ ActiveRecord::Schema.define(version: 20170524124943) do
     t.index ["user_id"], name: "index_consoles_on_user_id", using: :btree
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "console_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["console_id"], name: "index_reviews_on_console_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -81,4 +91,5 @@ ActiveRecord::Schema.define(version: 20170524124943) do
   add_foreign_key "bookings", "consoles"
   add_foreign_key "bookings", "users"
   add_foreign_key "consoles", "users"
+  add_foreign_key "reviews", "consoles"
 end
