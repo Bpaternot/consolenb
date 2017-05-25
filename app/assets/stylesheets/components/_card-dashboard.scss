@@ -91,3 +91,20 @@ i {
 .margin-bottom-for-title {
   margin-bottom: 80px;
 }
+
+.flex-box {
+  display: flex;
+  align-items: center;
+}
+
+.flex-box p {
+  margin: 0px 30px;
+}
+
+.flex-box p i {
+  font-size: 40px;
+}
+
+.margin-bottom-little {
+  margin-bottom: 20px;
+}

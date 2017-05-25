@@ -121,6 +121,19 @@
   height: calc(100vh - 400px);
 }
 
+.margin-top-for-button {
+  margin-top: 60px;
+}
+
+.btn-prussianblue {
+  background-color: $prussianblue;
+  color: $white;
+}
+
+.btn-prussianblue:hover {
+  color: $white;
+}
+
 @media (min-width: 1200px) {
 .container-index {
     width: 100%;
