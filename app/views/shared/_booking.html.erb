@@ -1,0 +1,30 @@
+<div class="fake-height"></div>
+<div class="flex relative">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <h2>Rented by <%= console.user.first_name %> <%= console.user.last_name %></h2>
+      <p><%= console.user.description %></p>
+      <p><i class="fa fa-television" aria-hidden="true"></i> <span class="in-redpastel"><%= console.brand %></span></p>
+      <p><i class="fa fa-gamepad" aria-hidden="true"></i> <span class="in-redpastel"><%= console.shifter %></span> controllers</p>
+      <p><i class="fa fa-eur" aria-hidden="true"></i> <span class="in-redpastel"><%= console.price_per_day %></span> per day</p>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="resa">
+        <div class='resa-body'>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+              <h2 class="text-center">Book now ?</h2>
+              <%= simple_form_for [console, booking] do |f| %>
+              <%= f.text_field :start_day, class: "datepicker" %>
+              <%= f.input :duration, collection: 1..7 %>
+              <%= f.submit "Book !", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+<%= link_to "Go back", consoles_path, class: "btn btn-primary absolute" %>
+</div>
