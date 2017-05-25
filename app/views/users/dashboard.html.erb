@@ -32,12 +32,11 @@
             <% else %>
               <% @bookings_pending_owner.each do |book| %>
                 <div class="col-xs-12 col-md-4">
-                <ul>
+
                   <% if book.console == console %>
                         <h4 class="card-title"><%= book.user.first_name %> want to book it!</h4>
-                        <p class="card-text">Start day: <%= book.start_day %></p>
-                        <p class="card-text">Duration: <%= book.duration %> </p>
-                        <p class="card-text">Console: <%= book.console.brand %></p>
+                        <p class="card-text">Start day: <%= book.start_day %> | Duration: <%= book.duration %> days| Console: <%= book.console.brand %></p>
+
                         <%= simple_form_for book do |f| %>
                          <%= f.input :status, :as => :hidden, :input_html => { :value => "approved" } %>
                           <%= f.submit "Accept", class: "btn btn-primary" %>
@@ -53,14 +52,12 @@
                 <div class="col-xs-12 col-md-4">
                   <% if book.console == console %>
                         <h4 class="card-title">You have a future booking with<%= book.user.first_name %></h4>
-                        <p class="card-text">Start day: <%= book.start_day %></p>
-                        <p class="card-text">Duration: <%= book.duration %> </p>
-                        <p class="card-text">Console: <%= book.console.brand %></p>
+                        <p class="card-text">Start day: <%= book.start_day %> | Duration: <%= book.duration %> days</p>
                     </div>
                   <% end %>
               <% end %>
              <% end %>
-          </ul>
+
           </div>
         </div>
     <% end %>
