@@ -1,0 +1,46 @@
+.tabs {
+  display: flex;
+  align-items: center;
+  min-width: 700px;
+}
+
+.tab {
+  flex: 1 0 auto;
+  background-color: #ff634a;
+  padding: 25px 40px;
+  min-width: 80px;
+  color: white;
+}
+
+.tab:hover {
+  background-color: #ef5d45;
+}
+
+.tab:first-child {
+  border-radius: 10px 0 0 0;
+  background-color: #FFFFFF;
+  color: #E55942;
+}
+
+.tab:last-child {
+  border-radius: 0 10px 0 0;
+}
+
+.marged-auto {
+  margin: 30px auto;
+}
+
+.profile-header-wrapper {
+  min-height: 200px;
+  background-color: #E55942;
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.profile-header-infos {
+  color: white;
+}
+ .profile-header-infos h2 {
+  padding-bottom: 10px;
+ }
