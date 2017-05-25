@@ -10,6 +10,9 @@
   padding-bottom: 5em;
 }
 
+.z-20 {
+  z-index: 20;
+}
 // Backgrounds
 .bg-black {
   background: #4a4a4a;
@@ -26,6 +29,10 @@
 
 .padded-none {
   padding: 0px 0px;
+}
+
+.hidden {
+  display: none;
 }
 
 .scroll-authorized {
