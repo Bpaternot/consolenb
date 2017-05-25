@@ -23,7 +23,6 @@ gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
-gem 'omniauth-facebook'
 
 gem "geocoder"
 
