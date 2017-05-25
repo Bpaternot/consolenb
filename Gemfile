@@ -10,7 +10,6 @@ gem 'pg'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
-gem 'omniauth-facebook'
 
 gem 'sass-rails'
 gem 'jquery-rails'
