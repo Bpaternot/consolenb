@@ -22,13 +22,17 @@
             <h2 class="text-center">Book now ?</h2>
             <%= simple_form_for [console, @booking] do |f| %>
             <%= f.text_field :start_day, class: "datepicker" %>
-            <%= f.input :duration, collection: 1..7 %>
+
+            <p> <label for="duration">Duration</label></p>
+              <%= f.input :duration, as: :radio_buttons, collection: 1..7, label: false, item_wrapper_tag: false, wrapper_html: {class: 'duration-choice'}  %>
             <%= f.submit "Book !", class: "btn btn-primary" %>
             <% end %>
-            <h3> Les commentaires de la consoles </h3>
-            <% console.reviews.each do |review| %>
-            <%= review.content %>
-            <% end %>
+            <h3> Reviews </h3>
+            <ul>
+              <% console.reviews.each do |review| %>
+              <li><%= review.user.first_name %> : <%= review.content %>  <%= '*' * review.rating %></li>
+              <% end %>
+            </ul>
           </div>
           <% end %>
         </div>

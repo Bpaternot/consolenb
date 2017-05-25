@@ -1,0 +1,65 @@
+.brand-choice {
+  input {
+    display: none !important;
+  }
+  label {
+    background-color: #FF6663;
+    color: white;
+    border-radius: 2px;
+    padding: 12px;
+    margin-right: 5px;
+    transition: all ease 0.1s;
+    &:hover{
+      cursor: pointer;
+      background-color: red;
+    }
+  }
+  input:checked + label {
+    background-color: red;
+    font-weight: bold;
+  }
+}
+
+.shifter-choice {
+  input {
+    display: none !important;
+  }
+  label {
+    background-color: #FF6663;
+    color: white;
+    border-radius: 2px;
+    padding: 4px;
+    margin-right: 2px;
+    transition: all ease 0.1s;
+    &:hover{
+      cursor: pointer;
+      background-color: black;
+    }
+  }
+  input:checked + label {
+    background-color: black;
+    font-weight: bold;
+  }
+}
+
+.duration-choice {
+  input {
+    display: none !important;
+  }
+  label {
+    background-color: #FF6663;
+    color: white;
+    border-radius: 2px;
+    padding: 4px;
+    margin-right: 2px;
+    transition: all ease 0.1s;
+    &:hover{
+      cursor: pointer;
+      background-color: black;
+    }
+  }
+  input:checked + label {
+    background-color: black;
+    font-weight: bold;
+  }
+}
