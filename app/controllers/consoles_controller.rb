@@ -6,16 +6,16 @@ class ConsolesController < ApplicationController
 
   def index
    @brand = params[:brand]
-   @consoles = Console.where(brand: @brand)
+   # @consoles = Console.where(brand: @brand)
 
-   @console = Console.where.not(latitude: nil, longitude: nil)
+    @consoles = Console.where(brand: @brand).where.not(latitude: nil, longitude: nil)
 
     @hash = Gmaps4rails.build_markers(@consoles) do |console, marker|
       marker.lat console.latitude
       marker.lng console.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
-
+    @booking = Booking.new()
   end
 
   def show
