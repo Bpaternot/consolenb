@@ -9,8 +9,15 @@
   // border: 1px solid black;
 }
 
-.card-console {
+.text-no-booking {
+  min-height: 212px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
+.card-console h2 {
+  color: $prussianblue;
 }
 
 .card-not-approved {
@@ -18,6 +25,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 15px;
+}
+
+i {
+  color: $prussianblue;
 }
 
 .card-not-approved h3 {
@@ -62,4 +73,21 @@
 
 .status-approval {
   width: 170px;
+}
+
+.status-approval p {
+  color: #32B796;
+}
+
+.container-de-secours {
+  width: 780px;
+  margin: 45px auto;
+}
+
+.container-de-secours h2 {
+  color: $prussianblue;
+}
+
+.margin-bottom-for-title {
+  margin-bottom: 80px;
 }

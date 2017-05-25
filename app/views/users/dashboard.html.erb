@@ -1,96 +1,200 @@
 <div class="fake-height"></div>
-<div class="profile-header-wrapper">
+<div class="profile-header-wrapper fixed-position">
   <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-<div class="profile-header-infos text-center margin-bottom">
-      <h1 class="text-center"><%= @user.first_name %> <%= @user.last_name %>&nbsp&nbsp<%= link_to "", edit_user_registration_path, class: "font-change fa fa-pencil" %></h1>
-      <h4 class="text-center"><%= @user.description %></h4>
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+        <div class="profile-header-infos text-center margin-bottom">
+          <h1 class="text-center"><%= @user.first_name %> <%= @user.last_name %>&nbsp&nbsp<%= link_to "", edit_user_registration_path, class: "font-change fa fa-pencil" %></h1>
+          <h4 class="text-center"><%= @user.description %></h4>
+        </div>
+      </div>
+    </div>
+    <div class="tabs">
+      <div class="tab text-center selected">
+        <p><b>OWNER</b></p>
+      </div>
+      <div class="tab text-center">
+        <p><b>RENTER</b></p>
       </div>
     </div>
   </div>
-  <div class="tabs">
-    <div class="tab text-center <%= 'selected' if @user.consoles.any? %>">
-      <p><b>OWNER</b></p>
-    </div>
-    <div class="tab text-center <%= 'selected' if @user.consoles.empty? %>">
-      <p><b>RENTER</b></p>
+</div>
+<div class="huge-fake-height"></div>
+<div class="fake-banner"></div>
+
+<% if @user.consoles.empty?  %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="tab-content container-vh">
+      <div>
+        <p>Create listing</p>
+        <p>Accept booking from passionated gamers</p>
+        <p><i class="fa fa-eur" aria-hidden="true"></i>
+        <p>Earn money</p>
+        <p></p>
+      </div>
+
+      <div class="text-center">
+      <p class="margin-bottom">Maybe you should add your own console and try to rent it !</p>
+      <%= link_to "New console", new_console_path, class:"btn btn-primary text-center"%>
+      </div>
+  </div>
     </div>
   </div>
 </div>
-</div>
+<% end %>
+
+
 
 <div class="tab-content">
 
-<div class="container">
+  <div class="container">
     <% @user.consoles.each do |console| %>
-  <div class="row consoles-rows">
-    <div class="col-md-6 padded-none ">
-      <div class="card-console">
-        <h2><%= console.brand %></h2>
-        <p><%= console.shifter %> controllers</p>
-        <p><%= console.description %></p>
-        <%= link_to "Edit",  edit_console_path(console), class: "btn btn-primary"%>
-        <%= link_to "Delete", console_path(console),
-        method: :delete,
-        data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+    <div class="row consoles-rows">
+      <div class="col-md-6 padded-none ">
+        <div class="card-console">
+          <h2><%= console.brand %></h2>
+          <p><%= console.shifter %> controllers</p>
+          <p></p>
+          <p><%= console.description %></p>
+          <%= link_to "Edit",  edit_console_path(console), class: "btn btn-primary"%>
+          <%= link_to "Delete", console_path(console),
+          method: :delete,
+          data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+        </div>
       </div>
-    </div>
-    <div class="col-md-6 padded-none">
-      <% if console.bookings.empty? %>
-      <p>Nobody booked this console for now</p>
-      <% else %>
-      <% @bookings_pending_owner.each do |book| %>
-      <% if book.console == console %>
-      <div class="card-not-approved">
-        <h3><i class="fa fa-user" aria-hidden="true"></i>&nbsp<%= book.user.first_name %></h3>
+      <div class="col-md-6 padded-none">
+        <% if console.bookings.empty? %>
+        <div class="text-no-booking">
+          <p>Nobody booked this console for now</p>
+        </div>
+        <% else %>
+        <% @bookings_pending_owner.each do |book| %>
+        <% if book.console == console %>
+        <div class="card-not-approved">
+          <h3><i class="fa fa-user" aria-hidden="true"></i>&nbsp<%= book.user.first_name %></h3>
           <div>
             <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp<%= book.start_day %></p>
             <p><i class="fa fa-hourglass-start" aria-hidden="true"></i>&nbsp<%= book.duration %> days</p>
           </div>
           <div class="buttons-approval">
-          <div>
-          <%= simple_form_for book do |f| %>
-          <%= f.input :status, :as => :hidden, :input_html => { :value => "approved" } %>
-          <%= f.submit "Accept", class: "btn btn-primary" %>
-          <% end %>
-          </div>
-          <p>&nbsp&nbsp&nbsp</p>
-          <div>
-          <%= simple_form_for book do |f| %>
-          <%= f.input :status, :as => :hidden, :input_html => { :value => "declined" } %>
-          <%= f.submit "Decline", class: "btn btn-primary" %>
-          <% end %>
-          </div>
+            <div>
+              <%= simple_form_for book do |f| %>
+              <%= f.input :status, :as => :hidden, :input_html => { :value => "approved" } %>
+              <%= f.submit "Accept", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+            <p>&nbsp&nbsp&nbsp</p>
+            <div>
+              <%= simple_form_for book do |f| %>
+              <%= f.input :status, :as => :hidden, :input_html => { :value => "declined" } %>
+              <%= f.submit "Decline", class: "btn btn-primary" %>
+              <% end %>
+            </div>
           </div>
         </div>
         <hr style="border: none; height: 1px; color: #0B3954; background: #0B3954;"/>
-      <% end %>
-      <% end %>
-      <% @bookings_approved_owner.each do |book| %>
-      <% if book.console == console %>
-      <div class="card-approved">
-      <h3><i class="fa fa-user" aria-hidden="true"></i>&nbsp<%= book.user.first_name %></h4>
+        <% end %>
+        <% end %>
+        <% @bookings_approved_owner.each do |book| %>
+        <% if book.console == console %>
+        <div class="card-approved">
+          <h3><i class="fa fa-user" aria-hidden="true"></i>&nbsp<%= book.user.first_name %></h3>
           <div>
             <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp<%= book.start_day %></p>
             <p><i class="fa fa-hourglass-start" aria-hidden="true"></i>&nbsp<%= book.duration %> days</p>
           </div>
           <div class="status-approval text-center">
-          <p>APPROVED</p>
+            <p>APPROVED</p>
           </div>
+        </div>
+        <hr style="border: none; height: 1px; color: #BFD7EA; background: #BFD7EA;"/>
+        <% end %>
+        <% end %>
+        <% end %>
+
       </div>
-      <hr style="border: none; height: 1px; color: #BFD7EA; background: #BFD7EA;"/>
-      <% end %>
-      <% end %>
-      <% end %>
-
     </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
 
+<div class="tab-content hidden">
+
+  <!-- my pending bookings as renter -->
+  <div class="container">
+  <div class="container-de-secours">
+  <h2>My bookings</h2>
+  </div>
+    <% @bookings_pending.each do |book| %>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="card-approved">
+          <div>
+            <h3><i class="fa fa-user" aria-hidden="true"></i>&nbsp<%= book.console.user.first_name %></h3>
+            <p><i class="fa fa-gamepad" aria-hidden="true"></i>&nbsp<%= book.console.brand %> with <%= book.console.shifter %> controllers</p>
+          </div>
+          <div>
+            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp<%= book.start_day %></p>
+            <p><i class="fa fa-hourglass-start" aria-hidden="true"></i>&nbsp<%= book.duration %> days</p>
+          </div>
+          <div class="status-approval text-center">
+            <p style="color: #FF6663;">PENDING</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr style="border: none; width: 750px; height: 1px; color: #0B3954; background: #0B3954;"/>
+    <% end %>
+  </div>
+  <div class="container">
+    <% @bookings_approved.each do |book| %>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="card-approved">
+          <div>
+            <h3><i class="fa fa-user" aria-hidden="true"></i>&nbsp<%= book.console.user.first_name %></h3>
+            <p><i class="fa fa-gamepad" aria-hidden="true"></i>&nbsp<%= book.console.brand %> with <%= book.console.shifter %> controllers</p>
+          </div>
+          <div>
+            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp<%= book.start_day %></p>
+            <p><i class="fa fa-hourglass-start" aria-hidden="true"></i>&nbsp<%= book.duration %> days</p>
+          </div>
+          <div class="status-approval text-center">
+            <p style="color: #32B796;">APPROVED</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr style="border: none; width: 750px; height: 1px; color: #0B3954; background: #0B3954;"/>
+    <% end %>
+  </div>
+  <div class="container">
+    <% @bookings_past.each do |book| %>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="card-approved">
+          <div>
+            <h3><i class="fa fa-user" aria-hidden="true"></i>&nbsp<%= book.console.user.first_name %></h3>
+            <p><i class="fa fa-gamepad" aria-hidden="true"></i>&nbsp<%= book.console.brand %> with <%= book.console.shifter %> controllers</p>
+          </div>
+          <div>
+            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp<%= book.start_day %></p>
+            <p><i class="fa fa-hourglass-start" aria-hidden="true"></i>&nbsp<%= book.duration %> days</p>
+          </div>
+          <div class="status-approval text-center">
+            <p style="color: #BFD7EA;">PAST</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr style="border: none; width: 750px; height: 1px; color: #0B3954; background: #0B3954;"/>
+    <% end %>
+  </div>
+  <div class="fake-height"></div>
 </div>
 
-<div class="tab-content">
 
-</div>
+
+

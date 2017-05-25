@@ -18,7 +18,8 @@
 }
 
 .tab:hover {
-  background-color: $paleaqua;
+  background-color: $white;
+  color: $prussianblue;
 }
 
 .tab:first-child{
@@ -53,11 +54,29 @@
 }
 
 .font-change {
-  font-size: 14px;
+  font-size: 18px;
   color: $white;
 }
 
 .font-change:hover {
   color: $pastelred;
   text-decoration: none;
+}
+
+.fixed-position {
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+}
+
+.huge-fake-height {
+  height: 209px;
+}
+
+.fake-banner {
+  height: 30px;
+  background-color: $white;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
 }
