@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   # before action to write for edit, update and dashboard
+  before_action :clean_booking_status
 
 
 
   def dashboard
     # redirect to dashboard
     @user = current_user
-    @bookings = Booking.all
     @bookings_pending = Booking.where(status: "pending", user: @user)
     @bookings_approved = Booking.where(status: "approved", user: @user)
     @bookings_declined = Booking.where(status: "declined", user: @user)
@@ -15,6 +15,10 @@ class UsersController < ApplicationController
     @bookings_approved_owner = []
     @bookings_declined_owner = []
     @bookings_past_owner = []
+    @bookings = Booking.all
+
+
+
 
     @bookings.each do |booking|
       if booking.console.user == current_user && booking.status == "pending"
@@ -30,6 +34,15 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def clean_booking_status
+    Booking.where(status: "approved", user: @user).each do |booking|
+    if booking.start_day + booking.duration < Date.today
+      booking.status = "past"
+      booking.save
+    end
+    end
+  end
 
   def set_user
     # find the current user
