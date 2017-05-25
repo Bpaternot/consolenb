@@ -6,7 +6,6 @@
         <h2 class="marged-left">Les consoles <span class="in-redpastel"><%= @brand %></span> en location:</h2>
           <% @consoles.each do |console| %>
           <%= render 'shared/list', console: console %>
-          <%= link_to "Mettre un commentaire", new_console_review_path(console), class: "btn btn-primary" %>
           <% end %>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6">
