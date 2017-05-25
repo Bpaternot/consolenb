@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get "dashboard", to: "users#dashboard"
   resources :consoles do
     resources :bookings, only: [:new, :create]
+    resources :reviews, only: [ :new, :create ]
   end
   resources :bookings, only: [:update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
