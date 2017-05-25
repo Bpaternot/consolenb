@@ -39,14 +39,12 @@
                          <%= f.input :status, :as => :hidden, :input_html => { :value => "approved" } %>
                           <%= f.submit "Accept", class: "btn btn-primary" %>
                        <% end %>
-
-
                         <%= simple_form_for book do |f| %>
                          <%= f.input :status, :as => :hidden, :input_html => { :value => "declined" } %>
                          <%= f.submit "Decline", class: "btn btn-primary" %>
                         <% end %>
                     </div>
-                  <% else %>
+                  <% elsif book.console != console %>
                     <p>Nobody booked this console for now.</p>
                   <% end %>
                 </div>
