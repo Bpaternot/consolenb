@@ -1,0 +1,5 @@
+<div class="fake-height"></div>
+<%= simple_form_for [@console, @review] do |f| %>
+  <%= f.input :content %>
+  <%= f.submit "add a review", class: "btn btn-primary" %>
+<% end %>
