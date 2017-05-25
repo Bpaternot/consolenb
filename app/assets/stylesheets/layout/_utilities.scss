@@ -9,6 +9,26 @@
   padding-top: 5em;
   padding-bottom: 5em;
 }
+.consoles-rows:nth-child(odd) {
+  background: $white;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.consoles-rows:nth-child(even) {
+  background: #fbfbfb;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.btn-paleaqua {
+  background-color: $paleaqua;
+  color: $prussianblue;
+}
 
 .z-20 {
   z-index: 20;
