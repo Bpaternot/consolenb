@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     @bookings_approved_owner = []
     @bookings_declined_owner = []
     @bookings_past_owner = []
+
     @bookings.each do |booking|
       if booking.console.user == current_user && booking.status == "pending"
         @bookings_pending_owner << booking
