@@ -1,9 +1,12 @@
 <%= simple_form_for @console do |f| %>
-  <%= f.input :brand, collection: Console::BRAND  %>
-  <%= f.input :shifter, collection: 1..8 %>
+
+
+  <%= f.input :brand, as: :radio_buttons, collection: Console::BRAND, label: false, item_wrapper_tag: false, wrapper_html: {class: 'brand-choice'}  %>
+  <label for="shifter">Manettes</label>
+  <%= f.input :shifter, as: :radio_buttons, collection: 1..8, label: false, item_wrapper_tag: false, wrapper_html: {class: 'shifter-choice'}  %>
   <%= f.input :description, as: :text, label: "description" %>
-  <%= f.input :address, as: :string %>
-  <%= f.input :price_per_day, as: :integer %>
+  <%= f.input :address, as: :string, label: "address"%>
+  <%= f.input :price_per_day, as: :integer, placeholder: "20 €" %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
 
