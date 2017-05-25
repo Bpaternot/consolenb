@@ -15,9 +15,10 @@
           <div class="hidden z-20" id="console-<%= console.id %>-details">
             <h2>Rented by <%= console.user.first_name %> <%= console.user.last_name %></h2>
             <p><%= console.user.description %></p>
-            <p><i class="fa fa-television" aria-hidden="true"></i> <span class="in-redpastel"><%= console.brand %></span></p>
-            <p><i class="fa fa-gamepad" aria-hidden="true"></i> <span class="in-redpastel"><%= console.shifter %></span> controllers</p>
-            <p><i class="fa fa-eur" aria-hidden="true"></i> <span class="in-redpastel"><%= console.price_per_day %></span> per day</p>
+            <p><i class="fa fa-television" aria-hidden="true"></i>&nbsp&nbsp&nbsp<span class="in-redpastel"><%= console.brand %></span></p>
+            <p><i class="fa fa-gamepad" aria-hidden="true"></i>&nbsp&nbsp&nbsp<span class="in-redpastel"><%= console.shifter %></span> controllers</p>
+            <p><i class="fa fa-eur" aria-hidden="true"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<span class="in-redpastel"><%= console.price_per_day %></span> per day</p>
+            <p><i class="fa fa-align-justify" aria-hidden="true"></i>&nbsp&nbsp&nbsp&nbsp<%= console.description %></p>
             <h2 class="text-center">Book now ?</h2>
             <%= simple_form_for [console, @booking] do |f| %>
             <%= f.text_field :start_day, class: "datepicker" %>

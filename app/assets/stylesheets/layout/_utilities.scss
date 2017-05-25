@@ -9,6 +9,27 @@
   padding-top: 5em;
   padding-bottom: 5em;
 }
+.consoles-rows:nth-child(odd) {
+  background: $white;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.consoles-rows:nth-child(even) {
+  background: #fbfbfb;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.btn-paleaqua {
+  background-color: $paleaqua;
+  color: $prussianblue;
+}
 
 .z-20 {
   z-index: 20;
@@ -91,6 +112,28 @@
   background-color: #3B5998;
   padding: 15px 30px;
 }
+
+.container-vh {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  height: calc(100vh - 400px);
+}
+
+.margin-top-for-button {
+  margin-top: 60px;
+}
+
+.btn-prussianblue {
+  background-color: $prussianblue;
+  color: $white;
+}
+
+.btn-prussianblue:hover {
+  color: $white;
+}
+
 @media (min-width: 1200px) {
 .container-index {
     width: 100%;

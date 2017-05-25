@@ -1,0 +1,110 @@
+.card-console {
+  padding: 20px 20px;
+  border-radius: 5px;
+  transition: all 0.15s ease;
+  max-width: 300px;
+  position: relative;
+  margin-left: 72px;
+  min-height: 200px;
+  // border: 1px solid black;
+}
+
+.text-no-booking {
+  min-height: 212px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card-console h2 {
+  color: $prussianblue;
+}
+
+.card-not-approved {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+i {
+  color: $prussianblue;
+}
+
+.card-not-approved h3 {
+  font-size: 18px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
+}
+
+.card-not-approved p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+// .card-not-approved {
+//   border: 1px solid black;
+// }
+
+.buttons-approval {
+  display: flex;
+  justify-content: space-around;
+}
+.card-approved {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  // border: 1px solid black;
+}
+
+.card-approved p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.card-approved h3 {
+  font-size: 18px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
+}
+
+.status-approval {
+  width: 170px;
+}
+
+.status-approval p {
+  color: #32B796;
+}
+
+.container-de-secours {
+  width: 780px;
+  margin: 45px auto;
+}
+
+.container-de-secours h2 {
+  color: $prussianblue;
+}
+
+.margin-bottom-for-title {
+  margin-bottom: 80px;
+}
+
+.flex-box {
+  display: flex;
+  align-items: center;
+}
+
+.flex-box p {
+  margin: 0px 30px;
+}
+
+.flex-box p i {
+  font-size: 40px;
+}
+
+.margin-bottom-little {
+  margin-bottom: 20px;
+}
