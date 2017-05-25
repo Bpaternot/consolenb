@@ -10,6 +10,53 @@
     </div>
   </div>
 
+
+
+  <div class="container">
+    <div class="row">
+      <% @user.consoles.each do |console| %>
+      <div class="col-md-6">
+        <h4 class="card-title"><%= console.brand %></h4>
+        <h6 class="card-subtitle mb-2 text-muted"><%= console.shifter %> manettes</h6>
+        <p class="card-text"><%= console.description %> </p>
+        <%= link_to "Edit",  edit_console_path(console), class: "btn btn-primary"%>
+         <%= link_to "Delete", console_path(console),
+              method: :delete,
+              data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+      </div>
+      <div class="col-md-6">
+
+        <% if console.bookings.empty? %>
+              <p>Nobody booked this console for now</p>
+            <% else %>
+              <% @bookings_pending_owner.each do |book| %>
+                  <% if book.console == console %>
+                        <h4 class="card-title"><%= book.user.first_name %> want to book it!</h4>
+                        <p class="card-text">Start day: <%= book.start_day %> | Duration: <%= book.duration %> days| Console: <%= book.console.brand %></p>
+                        <%= simple_form_for book do |f| %>
+                         <%= f.input :status, :as => :hidden, :input_html => { :value => "approved" } %>
+                          <%= f.submit "Accept", class: "btn btn-primary" %>
+                       <% end %>
+                        <%= simple_form_for book do |f| %>
+                         <%= f.input :status, :as => :hidden, :input_html => { :value => "declined" } %>
+                         <%= f.submit "Decline", class: "btn btn-primary" %>
+                        <% end %>
+                  <% end %>
+              <% end %>
+              <% @bookings_approved_owner.each do |book| %>
+                  <% if book.console == console %>
+                        <h4 class="card-title">You have a future booking with<%= book.user.first_name %></h4>
+                        <p class="card-text">Start day: <%= book.start_day %> | Duration: <%= book.duration %> days</p>
+                  <% end %>
+              <% end %>
+          <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+
+
   <!-- OWNER FONCTIONNALITIES -->
   <h1>OWNER SIDE</h1>
   <div class="row">
@@ -103,9 +150,9 @@ ________________________________________________________________________________
         </div>
       <% end %>
       </div>
+      </div>
       <p>Your past bookings:</p>
       <div class="card">
-        <h2>My renting history</h2>
           <% @bookings_past.each do |book| %>
             <div class="col-sm-6">
             <div style="background-color: #F0F2EF; margin-bottom: 5px; position: relative; margin-right: 2px; width: 350px">
@@ -118,7 +165,7 @@ ________________________________________________________________________________
             </div>
           <% end %>
         </div>
-      </div>
+
 
 
 
