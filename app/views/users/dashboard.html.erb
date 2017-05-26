@@ -69,7 +69,7 @@
           <p>Nobody booked this console for now</p>
         </div>
         <% else %>
-        <% @bookings_pending_owner.each do |book| %>
+        <% @bookings_pending_owner.each_with_index do |book, index| %>
         <% if book.console == console %>
         <div class="card-not-approved">
           <h3><i class="fa fa-user" aria-hidden="true"></i>&nbsp<%= book.user.first_name %></h3>
@@ -93,10 +93,12 @@
             </div>
           </div>
         </div>
-        <hr style="border: none; height: 1px; color: #0B3954; background: #0B3954;"/>
+        <% if @bookings_approved_owner.empty? == false %>
+          <hr style="border: none; height: 1px; color: #0B3954; background: #0B3954;"/>
         <% end %>
         <% end %>
-        <% @bookings_approved_owner.each do |book| %>
+        <% end %>
+        <% @bookings_approved_owner.each_with_index do |book, index| %>
         <% if book.console == console %>
         <div class="card-approved">
           <h3><i class="fa fa-user" aria-hidden="true"></i>&nbsp<%= book.user.first_name %></h3>
@@ -108,7 +110,9 @@
             <p>APPROVED</p>
           </div>
         </div>
-        <hr style="border: none; height: 1px; color: #BFD7EA; background: #BFD7EA;"/>
+        <% if index != @bookings_approved_owner.length - 1 %>
+          <hr style="border: none; height: 1px; color: #0B3954; background: #0B3954;"/>
+        <% end %>
         <% end %>
         <% end %>
         <% end %>
@@ -118,6 +122,9 @@
     <% end %>
   </div>
 </div>
+
+
+
 
 <div class="tab-content hidden">
 
@@ -187,11 +194,11 @@
           </div>
             <% if book.console.reviews.where(user: current_user).count < 0  %>
               <%= link_to "Noter la console", new_console_review_path(book.console), class: "btn btn-primary" %>
-              <% else %>
               <% end %>
         </div>
       </div>
     </div>
+
     <hr style="border: none; width: 750px; height: 1px; color: #0B3954; background: #0B3954;"/>
     <% end %>
   </div>
