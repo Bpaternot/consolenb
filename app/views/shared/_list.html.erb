@@ -7,7 +7,8 @@
 <div class="product marged-left" id="product-<%= console.id %>">
   <%= cl_image_tag url, crop: :fit, class: "product-image hidden-xs" %>
   <div class='product-body'>
-    <h3>Rent by <span class="in-redpastel"><%= console.user.first_name %> <%= console.user.last_name %></span></h3>
+    <h3><% avatar_url = console.user.facebook_picture_url || "http://placehold.it/30x30" %>
+      <%= image_tag avatar_url, class: "avatar"%>   Rent by <span class="in-redpastel"><%= console.user.first_name %> <%= console.user.last_name %></span></h3>
     <% if console.shifter > 1 %>
     <p><%= console.brand %> with <%= console.shifter %> controllers - <span class="in-redpastel"><%= console.price_per_day %>€</span></p>
     <% else %>
