@@ -4,38 +4,54 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-6">
         <h2 class="marged-left">Les consoles <span class="in-redpastel"><%= @brand %></span> en location:</h2>
-          <% @consoles.each do |console| %>
-          <%= render 'shared/list', console: console %>
-          <% end %>
+        <% @consoles.each do |console| %>
+        <%= render 'shared/list', console: console %>
+        <% end %>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6">
-        <div>
-          <div id="map" class="scroll-unauthorized" style="width: 100%; height: calc(100vh - 90px);"></div>
-          <% @consoles.each do |console| %>
-          <div class="hidden z-20" id="console-<%= console.id %>-details">
-            <h2>Rented by <%= console.user.first_name %> <%= console.user.last_name %></h2>
-            <p><%= console.user.description %></p>
-            <p><i class="fa fa-television" aria-hidden="true"></i>&nbsp&nbsp&nbsp<span class="in-redpastel"><%= console.brand %></span></p>
-            <p><i class="fa fa-gamepad" aria-hidden="true"></i>&nbsp&nbsp&nbsp<span class="in-redpastel"><%= console.shifter %></span> controllers</p>
-            <p><i class="fa fa-eur" aria-hidden="true"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<span class="in-redpastel"><%= console.price_per_day %></span> per day</p>
-            <p><i class="fa fa-align-justify" aria-hidden="true"></i>&nbsp&nbsp&nbsp&nbsp<%= console.description %></p>
-            <h2 class="text-center">Book now ?</h2>
-            <%= simple_form_for [console, @booking], namespace: "console_#{console.id}" do |f| %>
-            <%= f.text_field :start_day, class: "datepicker" %>
 
-            <p> <label for="duration">Duration</label></p>
-              <%= f.input :duration, as: :radio_buttons, collection: 1..7, label: false, item_wrapper_tag: false, wrapper_html: {class: 'duration-choice'}  %>
-            <%= f.submit "Book !", class: "btn btn-primary" %>
-            <% end %>
-            <h3> Reviews </h3>
-            <ul>
-              <% console.reviews.each do |review| %>
-              <li><%= review.user.first_name %> : <%= review.content %>  <%= '*' * review.rating %></li>
-              <% end %>
-            </ul>
-          </div>
-          <% end %>
+        <div class="flex-box-of-details" style="background-color: #BFD7EA;">
+          <div id="map" class="scroll-unauthorized" style="width: 100%; height: calc(100vh - 90px);"></div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-8 col-md-offset-2">
+                <% @consoles.each do |console| %>
+                <div class="hidden book-form z-20" id="console-<%= console.id %>-details">
+                <div class="cross"><i class="fa fa-times" aria-hidden="true"></i></div>
+                  <h2>Rented by <%= console.user.first_name %> <%= console.user.last_name %></h2>
+                  <p><%= console.user.description %></p>
+                  <p><i class="fa fa-television" aria-hidden="true"></i>&nbsp&nbsp&nbsp<span class="in-redpastel"><%= console.brand %></span></p>
+                  <p><i class="fa fa-gamepad" aria-hidden="true"></i>&nbsp&nbsp&nbsp<span class="in-redpastel"><%= console.shifter %></span> controllers</p>
+                  <p><i class="fa fa-eur" aria-hidden="true"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<span class="in-redpastel"><%= console.price_per_day %></span> per day</p>
+                  <p><i class="fa fa-align-justify" aria-hidden="true"></i>&nbsp&nbsp&nbsp&nbsp<%= console.description %></p>
+                  <hr style="border: none; height: 1px; color: #0B3954; background: #0B3954;"/>
+                  <h2>Book now ?</h2>
+                  <%= simple_form_for [console, @booking] do |f| %>
+                  <%= f.text_field :start_day, class: "datepicker" %>
+
+                  <p> <label for="duration">Duration</label></p>
+                  <%= f.input :duration, as: :radio_buttons, collection: 1..7, label: false, item_wrapper_tag: false, wrapper_html: {class: 'duration-choice'}  %>
+                  <%= f.submit "Book !", class: "btn btn-primary" %>
+                  <% end %>
+                  <hr style="border: none; height: 1px; color: #0B3954; background: #0B3954;"/>
+                  <% if console.reviews.empty? %>
+                  <% else %>
+                  <h2> Reviews </h2>
+                  <ul>
+                    <% console.reviews.each do |review| %>
+                    <li><%= review.user.first_name %> : <%= review.content %>  <%= '*' * review.rating %></li>
+                    <% end %>
+                    <% end %>
+                  </ul>
+                </div>
+                <% end %>
+              </div>
+            </div>
+
+
         </div>
+
+
       </div>
     </div>
   </div>

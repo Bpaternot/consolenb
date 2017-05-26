@@ -92,6 +92,9 @@
     margin-right: 0px;
 }
 
+.flex-box-of-details {
+  height: calc(100vh - 90px);
+}
 .flex {
   height: calc(100vh - 90px);
   display: flex;
@@ -132,6 +135,22 @@
 
 .btn-prussianblue:hover {
   color: $white;
+}
+
+.flex-box-of-details {
+  position: relative;
+}
+
+.cross {
+  position: absolute;
+  right: 15px;
+  top: 35px;
+  font-size: 20px;
+}
+
+.cross i:hover {
+  color: $pastelred;
+  font-size: 20px;
 }
 
 @media (min-width: 1200px) {
