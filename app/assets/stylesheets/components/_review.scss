@@ -1,7 +1,18 @@
 .review {
-  opacity: 0.1;
   padding: 15px 30px;
+  position: relative;
 }
 
 .card-review {
+  z-index: 200000001;
+}
+
+.review-back {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  background: $white;
+  opacity: 0.1;
 }
