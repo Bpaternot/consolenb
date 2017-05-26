@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :consoles, dependent: :destroy
   has_many :bookings, dependent: :destroy
+  has_many :bookings_as_owner, through: :consoles, source: :bookings
   has_many :reviews, dependent: :destroy
 
   def self.find_for_facebook_oauth(auth)

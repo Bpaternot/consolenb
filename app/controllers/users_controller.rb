@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # before action to write for edit, update and dashboard
-  before_action :clean_booking_status
+  before_action :clean_booking_status, :alert_booking
 
 
 
@@ -38,6 +38,11 @@ class UsersController < ApplicationController
       booking.save
     end
     end
+  end
+
+  def alert_booking
+    pending_bookings_count = current_user.bookings_as_owner.select { |booking| booking.status == "pending" }.size
+    flash.now[:alert] = "You have #{ApplicationController.helpers.pluralize(pending_bookings_count, "pending booking")} !" if pending_bookings_count > 0
   end
 
   def set_user
