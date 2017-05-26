@@ -192,7 +192,7 @@
           <div class="status-approval text-center">
             <p style="color: #BFD7EA;">PAST</p>
           </div>
-            <% if book.console.reviews.where(user: current_user).count < 0  %>
+            <% if book.console.reviews.where(user: current_user).count == 0  %>
               <%= link_to "Noter la console", new_console_review_path(book.console), class: "btn btn-primary" %>
               <% end %>
         </div>
