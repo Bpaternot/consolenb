@@ -9,6 +9,18 @@
   margin-left: 72px;
 }
 
+.product-expand {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+  transition: all 0.15s ease;
+  width: 700px;
+  position: relative;
+  margin-left: 72px;
+  background: $paleaqua;
+}
+
 .in-redpastel {
   color: $pastelred;
 }
@@ -43,6 +55,7 @@
   text-align: center;
   margin: 0px;
 }
+
 .product-controls a {
   padding: 0 20px;
   font-size: 20px;
@@ -66,12 +79,24 @@
   z-index: 10;
 }
 
-.card-link {
+.hover-banner {
+  background: $paleaqua;
+  width: 100%;
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   width: 100%;
+  opacity: 1;
+  border-radius: 5px;
+}
+
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 200%;
   z-index: 2;
   background: black;
   opacity: 0;
