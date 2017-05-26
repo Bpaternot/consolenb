@@ -1,3 +1,4 @@
+
 source 'https://rubygems.org'
 ruby '2.3.3'
 source "https://rails-assets.org" do
@@ -24,7 +25,6 @@ gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
-gem 'omniauth-facebook'
 
 gem "geocoder"
 
