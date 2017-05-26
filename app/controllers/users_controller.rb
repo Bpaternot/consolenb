@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   def alert_booking
     pending_bookings_count = current_user.bookings_as_owner.select { |booking| booking.status == "pending" }.size
-    flash.now[:alert] = "You have #{ApplicationController.helpers.pluralize(pending_bookings_count, "pending booking")} !" if pending_bookings_count > 0
+    flash.now[:alert] = "You have #{ApplicationController.helpers.pluralize(pending_bookings_count, "pending booking")} ! You can either accept or decline." if pending_bookings_count > 0
   end
 
   def alert_booking_renter

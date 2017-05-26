@@ -1,19 +1,19 @@
 <div class="fake-height"></div>
-<div class="scroll-authorized margin-bottom">
+<div class="margin-bottom">
   <div class="container container-index padded-none">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="col-xs-12 col-sm-6 col-md-6 target-for-scroll-index scroll-authorized">
         <h2 class="marged-left">Les consoles <span class="in-redpastel"><%= @brand %></span> en location:</h2>
         <% @consoles.each do |console| %>
         <%= render 'shared/list', console: console %>
         <% end %>
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="col-xs-12 col-sm-6 col-md-6 target-for-offset">
 
-        <div class="flex-box-of-details" style="background-color: #BFD7EA;">
+        <div style="background-color: #BFD7EA; min-height: 120%;">
           <div id="map" class="scroll-unauthorized" style="width: 100%; height: calc(100vh - 90px);"></div>
 
-            <div class="row">
+            <div class="row flex-box-of-details target-for-scroll-details">
               <div class="col-xs-12 col-sm-6 col-md-8 col-md-offset-2">
                 <% @consoles.each do |console| %>
                 <div class="hidden book-form z-20" id="console-<%= console.id %>-details">
@@ -23,7 +23,9 @@
                   <hr style="border: none; height: 1px; color: #0B3954; background: #0B3954;"/>
                   <h2>Book now ?</h2>
                   <%= simple_form_for [console, @booking], namespace: "console_#{console.id}" do |f| %>
-                  <div class="datepicker"></div>
+                  <div class="datepicker">
+                    <%= f.input :start_day, as: :hidden %>
+                  </div>
                   <%#= f.text_field :start_day, class: "datepicker" %>
                   <p class="margin-top-for-duration"> <label for="duration">Duration</label></p>
                   <%= f.input :duration, as: :radio_buttons, collection: 1..7, label: false, item_wrapper_tag: false, wrapper_html: {class: 'duration-choice'}  %>
@@ -36,7 +38,7 @@
                   <ul>
                     <% console.reviews.each do |review| %>
                     <p><%= review.user.first_name %> : <%= review.content %>  <%= '*' * review.rating %></li></p>
-                    <hr style="border: none; height: 1px; width: 50%; color: #0B3954; background: #0B3954;"/>
+                    <hr style="border: none; height: 1px; width: 50%; color: #0B3954; background: #0B3954; text-align: left;"/>
                     <% end %>
                     <% end %>
                   </ul>

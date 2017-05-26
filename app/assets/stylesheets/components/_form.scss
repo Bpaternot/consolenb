@@ -47,7 +47,7 @@
     display: none !important;
   }
   label {
-    background-color: #FF6663;
+    background-color: $prussianblue;
     width: 45px;
     color: white;
     border-radius: 2px;
@@ -56,11 +56,11 @@
     transition: all ease 0.1s;
     &:hover{
       cursor: pointer;
-      background-color: $prussianblue;
+      background-color: $pastelred;
     }
   }
   input:checked + label {
-    background-color: $prussianblue;
+    background-color: $pastelred;
     font-weight: bold;
   }
 }
