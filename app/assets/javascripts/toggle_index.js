@@ -1,4 +1,4 @@
-$(".card-link").click(function(){
+  $(".card-link").click(function(){
   var targetId = $(this).attr('id');
   $("#map").addClass("hidden");
   $(".book-form").addClass("hidden");
@@ -20,6 +20,7 @@ $(".cross").click(function(){
   $(".product-expand").removeClass("product-expand").addClass("product");
   $(".product-controls").removeClass("hidden");
 });
+
 
 
     // $(this).removeClass("product");

@@ -48,6 +48,7 @@
   }
   label {
     background-color: #FF6663;
+    width: 45px;
     color: white;
     border-radius: 2px;
     padding: 4px;
@@ -55,11 +56,15 @@
     transition: all ease 0.1s;
     &:hover{
       cursor: pointer;
-      background-color: black;
+      background-color: $prussianblue;
     }
   }
   input:checked + label {
-    background-color: black;
+    background-color: $prussianblue;
     font-weight: bold;
   }
+}
+
+.collection_radio_buttons {
+  text-align: center;
 }
