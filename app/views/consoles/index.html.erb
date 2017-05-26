@@ -240,6 +240,16 @@
       },
       internal: { id: 'map' } }, function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        _.each(<%= raw @hash.to_json %>, function(json, index){
+          var marker = markers[index];
+          $("#" + json.id).on('mouseenter', function() {
+            marker.getServiceObject().setAnimation(google.maps.Animation.BOUNCE);
+          });
+          $("#" + json.id).on('mouseleave', function() {
+            marker.getServiceObject().setAnimation(null);
+          });
+        });
+
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
         if (markers.length == 0) {
@@ -247,7 +257,7 @@
         } else if (markers.length == 1) {
           handler.getMap().setZoom(14);
         }
-      });
+    });
   });
 </script>
 <% end %>

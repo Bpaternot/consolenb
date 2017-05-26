@@ -13,6 +13,7 @@ class ConsolesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@consoles) do |console, marker|
       marker.lat console.latitude
       marker.lng console.longitude
+      marker.json({id: console.id})
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
     @booking = Booking.new()
