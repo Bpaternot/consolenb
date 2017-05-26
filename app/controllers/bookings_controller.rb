@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
     @booking.console = @console
     @booking.status = "pending"
     if @booking.save
-      redirect_to dashboard_path
+      redirect_to dashboard_path, notice: "You successfully booked! You will received an answer from the console owner soon"
     else
       render "consoles/show"
     end

@@ -27,7 +27,7 @@
                   <%#= f.text_field :start_day, class: "datepicker" %>
                   <p class="margin-top-for-duration"> <label for="duration">Duration</label></p>
                   <%= f.input :duration, as: :radio_buttons, collection: 1..7, label: false, item_wrapper_tag: false, wrapper_html: {class: 'duration-choice'}  %>
-                  <%= f.submit "Book !", class: "btn btn-primary margin-top-for-duration" %>
+                  <%= f.submit "Book !", class: "btn btn-primary margin-top-for-duration alert-booked" %>
                   <% end %>
                   <hr style="border: none; height: 1px; color: #0B3954; background: #0B3954;"/>
                   <% if console.reviews.empty? %>
