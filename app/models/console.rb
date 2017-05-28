@@ -9,6 +9,9 @@ class Console < ApplicationRecord
   BRAND = ["PS4", "PS3", "XBOX", "Wii", "Gamecube"]
 
   validates :brand, inclusion: { in: BRAND, allow_nil: false }
-
+  validates :shifter, presence: true
+  validates :description, presence: true
+  validates :price_per_day, presence: true
+  validates :address, presence: true
 
 end
